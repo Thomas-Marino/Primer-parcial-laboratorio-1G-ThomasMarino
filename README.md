@@ -2,7 +2,8 @@
 ---
 ### [Consigna.](https://docs.google.com/document/d/1MKLTkz4yQ4sdBsssIk2zXlBUpIjJm6e-CrCIeWTSG2s/edit)
 ---
-## Explicación del código paso por paso. Cada función está argumentada dentro del código.
+## Explicación del código paso por paso.  
+Cada función está argumentada dentro del código.
 ---
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/bd4ae5e3-18d3-4ce2-b9fd-94810e02a760)
 - Linea 1 a 7:  
