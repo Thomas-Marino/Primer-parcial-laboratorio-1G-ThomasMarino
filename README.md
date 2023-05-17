@@ -15,7 +15,7 @@ Una vez dentro del while, se mostrara el menú con la función "mostrar_menu()".
 Luego se pide el ingreso de ún número el cual representará la acción que el usuario desee realizar dentro del menú.  
 Este número_ingresado será utilizado en un match el cual realizará las acciones dentro del menú según el número ingresado.  
 **Cada case del match representa cada una de las consignas, es decir, el case 1 representa a la consigna n°1.**
-- ### Case 1 (Traer datos desde archivo)  
+### Case 1 (Traer datos desde archivo)  
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/ab850103-594a-4a0b-b096-f9ddadc2c7bf)
 - Linea 25 a 29:  
 Si es la primera vez que el usuario desea importar los datos, estos serán traidos desde el archivo "agrupamiento_insumos" a traves de una lista con la que se operará durante el resto del código.  
@@ -65,14 +65,14 @@ Asi es cómo obtengo una lista la cual tiene almacenados los valores con los que
 - Linea 30 a 32:  
 Si el usuario ya ingreso previamente la opción 1, simplemente imprimo el aviso de que los datos ya fueron importados previamente para no tener que hacerlo otra vez.
 ---
-- ### Case 2 (Listar cantidad por marca)  
+### Case 2 (Listar cantidad por marca)  
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/9b2b436f-c62d-4db2-a76e-d1b4b92188d9)
 - If y else de las lineas 36 y 46 sirven para verificar si los datos ya fueron importados, si los datos no fueron importados, se mostrará el mensaje informandole al usuario que no los importó.  
 - If de la linea 37 a 39:  
 Cumple con la función de crear la lista y el set de las marcas una sola vez durante la ejecución del código.
 - Else de la linea 40: Si el usuario ya ingresó previamente a la opción 2 o 3, solo se ejecutará el print de lo solicitado en el punto 2 en las lineas 42 a 45.
 ---
-- ### Case 3 (Listar insumos por marca)  
+### Case 3 (Listar insumos por marca)  
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/4c178257-395c-4b8f-805f-a963948b8e70)
 - If y else de las lineas 51 y 63 sirven para verificar si los datos ya fueron importados, si los datos no fueron importados, se mostrará el mensaje informandole al usuario que no los importó.  
 - If de la linea 52 a 54:  
@@ -80,7 +80,7 @@ Cumple con la función de crear la lista y el set de las marcas una sola vez dur
 - Else de la linea 55:
 Si el usuario ya ingresó previamente a la opción 2 o 3, solo se ejecutará el print de lo solicitado en el punto 3 en las lineas 57 a 62.  
 ---
-- ### Case 4 (Buscar insumo por característica)  
+### Case 4 (Buscar insumo por característica)  
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/26d05547-4700-45f2-bf37-2094ec20216c)
 - If y else de las lineas 68 y 79 sirven para verificar si los datos ya fueron importados, si los datos no fueron importados, se mostrará el mensaje informandole al usuario que no los importó.
 - Linea 69 a 78:
@@ -88,14 +88,14 @@ Se crea la variable "caracteristica_ingresada" la cual cumplirá con el propósi
 Dentro del for insumo In lista_insumos cada vez que la caracteristica ingresada esté presente en la descripcion del insumo, se printeará el insumo en el que se dé la coincidencia.  
 Cada vez que se da esta coincidencia, se le suma un 1 al contador, esto se debe a que si el contador permanece en 0 durante toda las iteraciones del "for in" significa que no se encontraron coincidencias con la caracteristica ingresada.
 ---
-- ### Case 5 (Listar insumos ordenados)  
+### Case 5 (Listar insumos ordenados)  
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/73cc5240-f589-4476-9a40-9a8ea1e18b5b)
 - if de la linea 84 a 89:  
 Se crea una deepcopy de la lista de insumos para no modificar la lista original de los insumos. Mediante la función "bubblesort_doble_campo" Realizo el orden solicitado en el punto 5.  
 Muestro la lista ordenada.
 - else de la linea 90 sirve para verificar si los datos ya fueron importados, si los datos no fueron importados, se mostrará el mensaje informandole al usuario que no los importó.
 ---
-- ### Case 6 (Realizar compras)  
+### Case 6 (Realizar compras)  
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/cf0fa150-c04f-403f-89a4-1442cb825388)
 - if de la linea 95 a 134:  
     - Creo el carrito y defino las variables al comienzo del case para que estos se reseteen cada vez que vuelvo a ingresar al case.
@@ -112,7 +112,7 @@ Muestro la lista ordenada.
     - Si el usuario desea no realizar la compra no sucederá nada y volverá al menú. 
 - Else de la linea 137: Cumple con el propósito de informar al usuario que aún no importo la lista de insumos del archivo csv.
 --- 
-- ### Case 7 (Guardar Json)  
+### Case 7 (Guardar Json)  
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/0dc6d5d6-ae32-4591-8fe0-d3230d68574a)
 - If de la linea 142 a 149: realizara lo solicitado si el usuario importo previamente los datos.
 - Escritura del archivo: Abro el archivo insumos.json dentro de la carpeta "Insumos" en modo escritura.
@@ -120,7 +120,7 @@ Muestro la lista ordenada.
     - El diccionario "producto" será una lista la cual tendrá como elementos a los insumos separados en sus respectivos diccionarios (ID, NOMBRE, MARCA, PRECIO Y DESCRIPCION)
 - Else de la linea 150: Informará al usuario que aun no importo los datos del csv.
 ---
-- ### Case 8 (Leer Json)  
+### Case 8 (Leer Json)  
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/c276a45d-c98e-4be9-95de-731e380010f3)
 - if de la linea 155 a 158: Realizará lo solicitado solo si el usuario importó los datos del archivo csv y si el usuario Guardó los datos en formato json. 
 - linea 156 a 158:
