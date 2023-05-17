@@ -67,7 +67,7 @@ Asi es cómo obtengo una lista la cual tiene almacenados los valores con los que
 Si el usuario ya ingreso previamente la opción 1, simplemente imprimo el aviso de que los datos ya fueron importados previamente para no tener que hacerlo otra vez.
 ---
 ### Case 2 (Listar cantidad por marca)  
-![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/9b2b436f-c62d-4db2-a76e-d1b4b92188d9)
+![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/2ce087ea-6cc6-4dde-95d0-201bc0e17c14)
 - If y else de las lineas 36 y 46 sirven para verificar si los datos ya fueron importados, si los datos no fueron importados, se mostrará el mensaje informandole al usuario que no los importó.  
 - If de la linea 37 a 39:  
 Cumple con la función de crear la lista y el set de las marcas una sola vez durante la ejecución del código.
