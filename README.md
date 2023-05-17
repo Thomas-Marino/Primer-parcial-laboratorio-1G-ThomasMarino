@@ -15,6 +15,7 @@ Una vez dentro del while, se mostrara el menú con la función "mostrar_menu()".
 Luego se pide el ingreso de ún número el cual representará la acción que el usuario desee realizar dentro del menú.  
 Este número_ingresado será utilizado en un match el cual realizará las acciones dentro del menú según el número ingresado.  
 **Cada case del match representa cada una de las consignas, es decir, el case 1 representa a la consigna n°1.**
+---
 ### Case 1 (Traer datos desde archivo)  
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/ab850103-594a-4a0b-b096-f9ddadc2c7bf)
 - Linea 25 a 29:  
