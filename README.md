@@ -157,3 +157,10 @@ Muestro la lista ordenada.
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/72611e50-b0eb-43f2-a2c0-d87dc46109e9)
 - Informa al usuario que ingresó una opción que no está dentro del menú.
 ---
+## Fuentes de información visitadas
+- Bing chat.
+    - [historial](https://1drv.ms/w/s!AslYlbuvLAFFgx2Rw6lPl01i29Ap?e=SAqLyW)
+- Clases grabadas durante la cursada.
+- www.python.org
+- [RegExr](https://regexr.com/)
+- [Modos de apertura de un archivo](https://stackoverflow.com/questions/1466000/difference-between-modes-a-a-w-w-and-r-in-built-in-open-function)
