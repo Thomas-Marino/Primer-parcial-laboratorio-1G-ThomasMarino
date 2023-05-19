@@ -9,6 +9,7 @@ from funciones.funciones_infoBAUS import *
 numero_ingresado = 0
 numero_facturacion = 1
 lista_marcas = []
+lista_nuevos_insumos = []
 set_marcas = set({})
 ingreso_opc_2 = False
 ingreso_opc_3 = False
@@ -194,6 +195,59 @@ while numero_ingresado != 10:
         case 10:
             os.system("cls")
             print("Cierre del programa realizado con éxito.")
+        case 11:
+            os.system("cls")
+            if datos_importados:
+                primer_descripcion = True
+                respuesta = "si"
+                contador = 0
+                nuevo_producto = {} 
+                nuevo_producto['ID'] = lista_insumos[-1] ["ID"] + 1  
+                nuevo_producto['NOMBRE'] = pedir_ingreso("Ingrese el nombre del nuevo producto: ")
+                print("Marcas a disponibles: ")
+                with open("insumos\\marcas.txt", "r") as archivo_marcas:
+                    marcas = archivo_marcas.read()
+                print(marcas)
+                nuevo_producto['MARCA'] = capitalizador(pedir_ingreso("Ingrese que marca desea agregar: "))
+                nuevo_producto['PRECIO'] = f"${float(pedir_numero('Ingrese el precio que desea asignarle al producto: '))}"
+                while respuesta != "no":
+                    contador += 1
+                    if primer_descripcion:
+                        nuevo_producto['DESCRIPCION'] = pedir_ingreso("Ingrese una descripcion para el producto: ")
+                        primer_descripcion = False
+                    else:
+                        nuevo_producto['DESCRIPCION'] = nuevo_producto['DESCRIPCION'] + f"|!*|{pedir_ingreso('Ingrese otra descripcion para el producto: ')}"
+                    if contador == 3:
+                        respuesta = "no"
+                    else:
+                        respuesta = validacion_entre_strings("Desea ingresar otra descripción? si/no: ", "si", "no")
+                lista_nuevos_insumos.append(nuevo_producto)
+                lista_insumos.append(nuevo_producto)
+                # Agrego los datos al csv
+                respuesta_actualizar_csv = validacion_entre_strings("Desea cargar los datos al archivo csv? si/no: ", "si", "no")
+                if respuesta_actualizar_csv == "si":
+                    with open("insumos\\insumos.csv", "r", encoding="utf-8") as archivo_insumos:
+                        copia = archivo_insumos.read()
+                    with open("insumos\\insumos.csv", "w", encoding="utf-8") as archivo_insumos:
+                        archivo_insumos.write(copia)
+                        for elemento in lista_nuevos_insumos:
+                            string_elemento = f"{elemento ['ID']},{elemento['NOMBRE']},{elemento['MARCA']},{elemento['PRECIO']},{elemento['DESCRIPCION']}"
+                            archivo_insumos.write(f'\"{string_elemento}"\n')
+                    lista_nuevos_insumos.clear() # Vacio la lista luego de cargar los elemntos.
+                else:
+                    pass
+                respuesta_actualizar_json = validacion_entre_strings("Desea cargar los datos en formato json? si/no: ", "si", "no")
+                if respuesta_actualizar_json == "si":
+                    with open("insumos\\Insumos.json", "w", encoding="utf-8") as escritura:
+                        insumos = {}
+                        insumos ['producto'] = []
+                        for insumo in lista_insumos:
+                            insumos ["producto"].append(insumo)
+                        json.dump(insumos, escritura, indent=4, ensure_ascii=False)
+                        print("Datos pasados a formato .json correctamente")
+            else:
+                print(mensaje_datos_inexistentes)
+            volver_al_menu()
         case _:
             os.system("cls")
             print("Esa opción no se encuentra dentro del menú")

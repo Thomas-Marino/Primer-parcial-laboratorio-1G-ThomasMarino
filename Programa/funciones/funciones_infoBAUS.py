@@ -9,6 +9,7 @@ def mostrar_menu()->None:
     print("=5= Listar insumos ordenados.\n=6= Realizar compras.")
     print("=7= Guardar Json.\n=8= Leer Json.")
     print("=9= Actualizar precios.\n=10= Salir del programa.\n")
+    print("=11= Agregar un nuevo producto a la lista.\n")
 
 def volver_al_menu()->None:
     """Función encargada de pausar el código.
