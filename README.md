@@ -1,5 +1,7 @@
 # Primer-parcial-laboratorio-1G
 ---
+Alumno: Thomas Marino.
+---
 ### [Consigna.](https://docs.google.com/document/d/1MKLTkz4yQ4sdBsssIk2zXlBUpIjJm6e-CrCIeWTSG2s/edit)
 ---
 ## Explicación del código paso por paso. Cada función se encuentra argumentada dentro del código.  
