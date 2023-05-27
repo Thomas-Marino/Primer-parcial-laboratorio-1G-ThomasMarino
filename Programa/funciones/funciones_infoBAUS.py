@@ -23,7 +23,7 @@ def volver_al_menu()->None:
     """
     input("\n\nPulse enter para volver al menú... ")
 
-def traer_datos_desde_archivo(datos_importados:bool, lista:list):
+def traer_datos_desde_archivo(datos_importados, lista:list):
     os.system("cls")
     if not datos_importados:
         with open("insumos\\Insumos.csv", "r", encoding="utf-8") as insumos_file:
@@ -53,7 +53,7 @@ def traer_datos_desde_archivo(datos_importados:bool, lista:list):
     volver_al_menu()
     return datos_importados
 
-def listar_cantidad_por_marca(datos_importados:bool,ingreso_opc_2, ingreso_opc_3, lista_insumos, lista_marcas, set_marcas):
+def listar_cantidad_por_marca(datos_importados,ingreso_opc_2, ingreso_opc_3, lista_insumos:list, lista_marcas:list, set_marcas:set):
     os.system("cls")
     if datos_importados:
         if (not ingreso_opc_3 and not ingreso_opc_2):# Si el usuario nunca ingreso a la opc 2 ni 3, realizo todas las operaciones necesarias.
@@ -70,7 +70,7 @@ def listar_cantidad_por_marca(datos_importados:bool,ingreso_opc_2, ingreso_opc_3
     volver_al_menu()
     return ingreso_opc_2
 
-def listar_insumos_por_marca (datos_importados:bool, ingreso_opc_2, ingreso_opc_3, lista_insumos, lista_marcas, set_marcas):
+def listar_insumos_por_marca (datos_importados, ingreso_opc_2, ingreso_opc_3, lista_insumos, lista_marcas:list, set_marcas:set):
     os.system("cls")
     if datos_importados:
         if (not ingreso_opc_3 and not ingreso_opc_2): # Si el usuario nunca ingreso a la opc 3 ni a la opc 2, realizo todas las operaciones necesarias.
@@ -89,7 +89,7 @@ def listar_insumos_por_marca (datos_importados:bool, ingreso_opc_2, ingreso_opc_
     volver_al_menu()
     return ingreso_opc_3
 
-def buscar_insumo_por_caracteristica(datos_importados:bool, lista_insumos):
+def buscar_insumo_por_caracteristica(datos_importados, lista_insumos):
     os.system("cls")
     if datos_importados:
         contador = 0
@@ -107,7 +107,7 @@ def buscar_insumo_por_caracteristica(datos_importados:bool, lista_insumos):
         print("Aún no trajo los datos desde el archivo csv.")
     volver_al_menu()
 
-def listar_insumos_ordenados (datos_importados:bool, lista_insumos:list):
+def listar_insumos_ordenados (datos_importados, lista_insumos:list):
     os.system("cls")
     if datos_importados:
         lista_ordenada = copy.deepcopy(lista_insumos) # Creo una deepcopy para que no se modifiquen los datos originales.
@@ -120,7 +120,7 @@ def listar_insumos_ordenados (datos_importados:bool, lista_insumos:list):
         print("Aún no trajo los datos desde el archivo csv.")
     volver_al_menu()
 
-def realizar_compras(datos_importados:bool, lista_insumos, numero_facturacion):
+def realizar_compras(datos_importados, lista_insumos:list, numero_facturacion):
     os.system("cls")
     if datos_importados:
         carrito = []
@@ -185,7 +185,7 @@ def realizar_compras(datos_importados:bool, lista_insumos, numero_facturacion):
         print("Aún no trajo los datos desde el archivo csv.")
     volver_al_menu()
 
-def guardar_json(datos_importados, lista_insumos):
+def guardar_json(datos_importados, lista_insumos:list):
     os.system("cls")
     if datos_importados:
         with open("insumos\\Insumos.json", "w", encoding="utf-8") as escritura:
@@ -209,7 +209,7 @@ def leer_json():
         print("No hay ningun archivo json para leer.")
     volver_al_menu()
 
-def aplicar_aumento(datos_importados, precios_actualizados, lista_insumos):
+def aplicar_aumento(datos_importados, precios_actualizados, lista_insumos:list):
     os.system("cls")
     if datos_importados:
         if not precios_actualizados:
@@ -239,12 +239,12 @@ def aplicar_aumento(datos_importados, precios_actualizados, lista_insumos):
         else:
             print("Los precios ya han sido actualizados.")
     else:
-        print("No hay ningun archivo json para leer.")
+        print("Aun no trajo los datos desde el archivo .csv.")
     volver_al_menu()
     return precios_actualizados 
 
 
-def añadir_nuevo_insumo(datos_importados:bool, lista_insumos:list, lista_nuevos_insumos:list, datos_actualizados:bool):
+def añadir_nuevo_insumo(datos_importados, lista_insumos:list, lista_nuevos_insumos:list, datos_actualizados):
     os.system("cls")
     if datos_importados:
         primer_descripcion = True
@@ -308,14 +308,13 @@ def actualizar_json(lista_insumos:list):
         json.dump(insumos, escritura, indent=4, ensure_ascii=False)
         print("Datos pasados a formato .json correctamente")
 
-def guardar_datos_actualizados(lista_insumos:list,lista_nuevos_insumos:list, datos_actualizados:bool, datos_actualizados_csv:bool, datos_actualizados_json:bool):
+def guardar_datos_actualizados(lista_insumos:list,lista_nuevos_insumos:list, datos_actualizados, datos_actualizados_csv, datos_actualizados_json):
     os.system("cls")
     if datos_actualizados:
         if datos_actualizados:
             print("En que formato de archivo desea actualizar los datos?")
             print("=1= Actualizar los datos en el archivo .csv")
             print("=2= Actualizar los datos en el archivo .json.")
-            print("=3= Actualizar los datos en ambos formatos de archivos")
             opcion_ingresada = pedir_numero_entre_valores("Ingrese que accion desea realizar: ", 1, 2) 
             match opcion_ingresada:
                 case 1:
