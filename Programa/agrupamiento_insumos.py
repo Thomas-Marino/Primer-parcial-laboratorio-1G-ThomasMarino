@@ -1,5 +1,4 @@
 from funciones.mis_funciones import capitalizador
-
 with open("insumos\\Insumos.csv", "r", encoding="utf-8") as insumos_file:
     insumos = insumos_file.read()
 

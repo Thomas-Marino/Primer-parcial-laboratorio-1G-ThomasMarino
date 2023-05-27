@@ -107,13 +107,12 @@ def encontrar_palabra(texto:str, busqueda:str)->bool:
     Returns:
         bool: Si alguna parte del texto coincide con la busqueda, la función retornará True, en el caso contrario, retornará False. 
     """
-    busqueda = re.search(busqueda, texto)
+    busqueda = re.search(busqueda.casefold(), texto.casefold())
     if busqueda:
         validacion = True
-        return validacion
     else:
         validacion = False
-        return validacion
+    return validacion
 
 def pedir_numero(mensaje:str)->int:
     """
@@ -153,7 +152,7 @@ def pedir_numero_entre_valores(mensaje:str, valor_menor:int, valor_mayor:int)->i
             while not entrada.isnumeric():
                 print(f"Error. {entrada} no es un numero-")
                 entrada = input(mensaje)
-            if (int(entrada) > valor_menor and int(entrada) < valor_mayor):
+            if (int(entrada) >= valor_menor and int(entrada) <= valor_mayor):
                 validado = True
             else:
                 entrada = input(mensaje)
@@ -176,7 +175,6 @@ def pedir_ingreso(mensaje:str)->str:
             entrada = input(mensaje)
         validado = True
         return entrada
-
 
 def contar_repeticiones(lista:list, item:str)->int:
     """

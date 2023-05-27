@@ -11,20 +11,10 @@ def capitalizador(cadena:str)->str:
         aquellas que tienen un espacio adelante también son modificadasa
     """
     cadena_auxiliar = list(cadena)
-    chequear_inicio_cadena_vacio = True
-    chequear_fin_cadena_vacia = True
-    while chequear_inicio_cadena_vacio:
-        chequear_inicio_cadena_vacio = True
-        if cadena_auxiliar[0].isspace():
-            cadena_auxiliar.remove(" ")
-        else:
-            chequear_inicio_cadena_vacio = False
-    while chequear_fin_cadena_vacia:
-        chequear_fin_cadena_vacia = True
-        if cadena_auxiliar[-1].isspace():
-            cadena_auxiliar.pop(-1)
-        else:
-            chequear_fin_cadena_vacia = False
+    if cadena_auxiliar[0].isspace():
+        cadena_auxiliar.remove(" ")
+    elif cadena_auxiliar[-1].isspace():
+        cadena_auxiliar.pop(-1)
     for i in range(len(cadena_auxiliar)):
         if (cadena_auxiliar[i].isupper()):
             cadena_auxiliar[i] = cadena_auxiliar[i].lower()
@@ -34,6 +24,7 @@ def capitalizador(cadena:str)->str:
             cadena_auxiliar[i + 1] = cadena_auxiliar[ i + 1 ].upper()
     cadena = "".join(cadena_auxiliar)
     return cadena
+
 # =============== COPIAR ===============
 def copiar_key_en_lista_y_set(lista:list, lista_nueva:list, set_nuevo:set, key:str)->None:
     """Función que cumple con el proposito de copiar el contenido de un diccionario especifico y almacenarlo en una lista y en un set.
@@ -109,3 +100,18 @@ def bubblesort_doble_campo(lista:list, ordenamiento:str, key:str, ordenamiento_2
                         j = 0
                 j += 1
             i += 1
+#=========== LISTAS ================
+def vaciar_listas(lista_1:list, lista_2:list=[], lista_3:list=[], lista_4:list=[], lista_5:list=[]):
+    """Funcion ideada para vaciar hasta 5 listas.
+    Args:
+        lista_1 (list): primer lista a vaciar
+        lista_2 (list, optional):  Segunda lista a vaciar (Opcional)
+        lista_3 (list, optional):  Tercera lista a vaciar (Opcional)
+        lista_4 (list, optional):  Cuarta lista a vaciar (Opcional)
+        lista_5 (list, optional):  Quinta lista a vaciar (Opcional)
+    """
+    lista_1.clear()
+    lista_2.clear()
+    lista_3.clear()
+    lista_4.clear()
+    lista_5.clear()
