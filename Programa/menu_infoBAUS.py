@@ -13,9 +13,7 @@ precios_actualizados = False
 datos_actualizados_csv = False
 datos_actualizados_json = False
 datos_actualizados = False
-
 json_creado = False
-mensaje_datos_inexistentes = "Aún no trajo los datos desde el archivo csv."
 
 while numero_ingresado != 12:
     os.system("cls")
