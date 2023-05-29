@@ -23,7 +23,18 @@ def volver_al_menu()->None:
     """
     input("\n\nPulse enter para volver al menú... ")
 
-def traer_datos_desde_archivo(datos_importados, lista:list):
+def traer_datos_desde_archivo(datos_importados:bool, lista:list)->bool:
+    """(Funcion ideada unicamente para el menú de infoBAUS.)
+    Se encarga de abrir el archivo insumos.csv y pasar los datos del archivo a una lista de diccionarios. 
+
+    Args:
+        datos_importados (bool): Bandera
+        lista (list): Lista en la cual se almacenarán los productos.
+
+    Returns:
+        bool: Una vez que los datos son pasados a la lista, la función retornará la variable
+        datos importados como True.
+    """
     os.system("cls")
     if not datos_importados:
         with open("insumos\\Insumos.csv", "r", encoding="utf-8") as insumos_file:
@@ -53,12 +64,30 @@ def traer_datos_desde_archivo(datos_importados, lista:list):
     volver_al_menu()
     return datos_importados
 
-def listar_cantidad_por_marca(datos_importados,ingreso_opc_2, ingreso_opc_3, lista_insumos:list, lista_marcas:list, set_marcas:set):
+def listar_cantidad_por_marca(datos_importados:bool,ingreso_opc_2:bool, ingreso_opc_3:bool, lista_insumos:list, lista_marcas:list, set_marcas:set)->bool:
+    """(Funcion ideada unicamente para el menú de infoBAUS.)
+    Si los datos fueron importados y el usuario nunca ingreso a la opción 2 ni a la opción 3 del menú entonces
+    se guardaran en una lista y en un set las marcas de los productos para mostrar al usuario 
+    cuantas marcas hay y cuantos productos pertenecen a cada marca.
+    Si el usuario ya ingresó previamente en alguna de esas dos opciones, simplemente se printea lo solicitado.
+
+    Args:
+        datos_importados (bool): Bandera que si vale False entonces no sucederá nada mas que 
+        informarle al usuario que aun no trajo los datos desde el archivo
+        ingreso_opc_2 (bool) y ingreso_opc_3 (bool): Banderas que evaluan si el usuario ingresó previamente a la opcion 2 o 3 del menú
+        lista_insumos (list): lista de los insumos
+        lista_marcas (list): lista en la cual se almacenaran las marcas
+        set_marcas (set): set en el cual se almacenaran las marcas
+
+    Returns:
+        bool: Una vez que los datos son pasados a la lista, la función retornará la variable
+        ingreso_opc_2 como True.
+    """
     os.system("cls")
     if datos_importados:
-        if (not ingreso_opc_3 and not ingreso_opc_2):# Si el usuario nunca ingreso a la opc 2 ni 3, realizo todas las operaciones necesarias.
+        if (not ingreso_opc_3 and not ingreso_opc_2):
             copiar_key_en_lista_y_set(lista_insumos, lista_marcas, set_marcas, "MARCA")
-        else: # Si el usuario ya ingresó previamente a la opcion 2 o 3, solo printeo los datos ya obtenidos
+        else: 
             pass
         print("       Marca\t      Insumos\n")
         for marca in set_marcas:
@@ -71,12 +100,30 @@ def listar_cantidad_por_marca(datos_importados,ingreso_opc_2, ingreso_opc_3, lis
     return ingreso_opc_2
 
 def listar_insumos_por_marca (datos_importados, ingreso_opc_2, ingreso_opc_3, lista_insumos, lista_marcas:list, set_marcas:set):
+    """(Funcion ideada unicamente para el menú de infoBAUS.)
+    Si los datos fueron importados y el usuario nunca ingreso a la opción 2 ni a la opción 3 del menú entonces
+    se guardaran en una lista y en un set las marcas de los productos para mostrar al usuario 
+    cuantas marcas hay y qué productos pertenecen a cada marca.
+    Si el usuario ya ingresó previamente en alguna de esas dos opciones, simplemente se printea lo solicitado.
+
+    Args:
+        datos_importados (bool): Bandera que si vale False entonces no sucederá nada mas que 
+        informarle al usuario que aun no trajo los datos desde el archivo
+        ingreso_opc_2 (bool) y ingreso_opc_3 (bool): Banderas que evaluan si el usuario ingresó previamente a la opcion 2 o 3 del menú
+        lista_insumos (list): lista de los insumos
+        lista_marcas (list): lista en la cual se almacenaran las marcas
+        set_marcas (set): set en el cual se almacenaran las marcas
+
+    Returns:
+        bool: Una vez que los datos son pasados a la lista, la función retornará la variable
+        ingreso_opc_2 como True.
+    """
     os.system("cls")
     if datos_importados:
-        if (not ingreso_opc_3 and not ingreso_opc_2): # Si el usuario nunca ingreso a la opc 3 ni a la opc 2, realizo todas las operaciones necesarias.
+        if (not ingreso_opc_3 and not ingreso_opc_2):
             ingreso_opc_3 = True
             copiar_key_en_lista_y_set(lista_insumos, lista_marcas, set_marcas, "MARCA")
-        else: # Si el usuario ya ingresó previamente a la opc 2 o 3, simplemente imprimo lo pedido en el punto 3.
+        else: 
             pass
         for marca in set_marcas:
             print(f"\t\t\tInsumos de la marca {marca}:")
@@ -89,7 +136,15 @@ def listar_insumos_por_marca (datos_importados, ingreso_opc_2, ingreso_opc_3, li
     volver_al_menu()
     return ingreso_opc_3
 
-def buscar_insumo_por_caracteristica(datos_importados, lista_insumos):
+def buscar_insumo_por_caracteristica(datos_importados:bool, lista_insumos:list)->None:
+    """(Funcion ideada unicamente para el menú de infoBAUS.)
+    Si el usuario trajo los datos desde el archivo csv entonces se pedirá el ingresso de una caracteristica.
+    Se mostraran al usuario todas los insumos que coincidan con esa caracteristica.  
+    Args:
+        datos_importados (bool): Bandera que si vale False entonces no sucederá nada mas que 
+        informarle al usuario que aun no trajo los datos desde el archivo
+        lista_insumos (list): Lista de los insumos
+    """
     os.system("cls")
     if datos_importados:
         contador = 0
@@ -107,27 +162,44 @@ def buscar_insumo_por_caracteristica(datos_importados, lista_insumos):
         print("Aún no trajo los datos desde el archivo csv.")
     volver_al_menu()
 
-def listar_insumos_ordenados (datos_importados, lista_insumos:list):
+def listar_insumos_ordenados (datos_importados:bool, lista_insumos:list)->None:
+    """(Funcion ideada unicamente para el menú de infoBAUS.)
+    Si el usuario trajo los datos desde el archivo csv entonces se mostrará todos los insumos
+    de la lista de insumos ordenados alfabeticamente por marca en orden a-z.
+    En el caso en el que haya más de un insumo con la misma marca, se los ordenará por precio de mayor a menor
+    Args:
+        datos_importados (bool): Bandera que si vale False entonces no sucederá nada mas que 
+        informarle al usuario que aun no trajo los datos desde el archivo
+        lista_insumos (list): Lista de los insumos
+    """
     os.system("cls")
     if datos_importados:
-        lista_ordenada = copy.deepcopy(lista_insumos) # Creo una deepcopy para que no se modifiquen los datos originales.
+        lista_ordenada = copy.deepcopy(lista_insumos) 
         bubblesort_doble_campo(lista_ordenada, "menor a mayor", "MARCA", "mayor a menor", "PRECIO")
         print("  ID  Nombre\t                                                    Marca\t   Precio         \tDescripcion\n")
         for insumo in lista_ordenada:
-            descripcion_resumida = re.sub(",(.+)", "", insumo['DESCRIPCION']) # creo una variable aparte que contenga la descripcion resumida por REGEX.
+            descripcion_resumida = re.sub(",(.+)", "", insumo['DESCRIPCION']) 
             print(f"~ {insumo['ID']:02}  {insumo['NOMBRE']:<54} {insumo['MARCA']:^20}  ${insumo['PRECIO']}          \t{descripcion_resumida:<50}\n")
     else:
         print("Aún no trajo los datos desde el archivo csv.")
     volver_al_menu()
 
-def realizar_compras(datos_importados, lista_insumos:list, numero_facturacion):
+def realizar_compras(datos_importados:bool, lista_insumos:list, numero_facturacion:int)->None:
+    """(Funcion ideada unicamente para el menú de infoBAUS.)
+    Si el usuario trajo los datos desde el archivo csv entonces podrá realizar la compra de uno o mas productos.
+    Args:
+        datos_importados (bool): Bandera que si vale False entonces no sucederá nada mas que 
+        informarle al usuario que aun no trajo los datos desde el archivo
+        lista_insumos (list): Lista de los insumos
+        numero_facturacion (int): Variable que cumple la funcion de crear archivos que se distingan de si mismos.
+    """
     os.system("cls")
     if datos_importados:
         carrito = []
         precio_total = 0
         id_ingresado = 1
         añadir_al_carrito = "si"
-        while añadir_al_carrito == "si": # Añado elementos al carrito
+        while añadir_al_carrito == "si": 
             os.system("cls")
             contador = 0
             ids_insumos_filtrados = []
@@ -156,9 +228,9 @@ def realizar_compras(datos_importados, lista_insumos:list, numero_facturacion):
             carrito.append(f"ID: {lista_insumos [id_ingresado - 1] ['ID']}, Nombre: {lista_insumos [id_ingresado - 1] ['NOMBRE']}, Cantidad: {cantidad_ingresada}\
                             \nPrecio unitario: ${lista_insumos [id_ingresado - 1] ['PRECIO']}, Precio por cantidad: ${precio_por_cantidad:5.2f}.\n")
             añadir_al_carrito = validacion_entre_strings("Producto añadido al carrito, desea añadir otro elemento? si/no: "
-                                                                , "si", "no") # Validacion de seguir añadiendo elementos al carrito.
+                                                                , "si", "no") 
             precio_total += precio_por_cantidad
-        os.system("cls") # Una vez termino de agregar elementos al carrito, proceso la compra.
+        os.system("cls") 
         for elemento in carrito:
             print(elemento)
         print(f"Precio total: ${precio_total:5.2f}.")
@@ -185,7 +257,14 @@ def realizar_compras(datos_importados, lista_insumos:list, numero_facturacion):
         print("Aún no trajo los datos desde el archivo csv.")
     volver_al_menu()
 
-def guardar_json(datos_importados, lista_insumos:list):
+def guardar_json(datos_importados:bool, lista_insumos:list)->None:
+    """(Funcion ideada unicamente para el menú de infoBAUS.)
+    Si el usuario trajo los datos desde el archivo csv entonces podrá guardarlos en un archivo de formato .json.
+    Args:
+        datos_importados (bool): Bandera que si vale False entonces no sucederá nada mas que 
+        informarle al usuario que aun no trajo los datos desde el archivo
+        lista_insumos (list): Lista de los insumos
+    """
     os.system("cls")
     if datos_importados:
         with open("insumos\\Insumos.json", "w", encoding="utf-8") as escritura:
@@ -199,7 +278,10 @@ def guardar_json(datos_importados, lista_insumos:list):
         print("Aún no trajo los datos desde el archivo csv.")
     volver_al_menu()
 
-def leer_json():
+def leer_json()->None:
+    """(Funcion ideada unicamente para el menú de infoBAUS.)
+    Si el usuario guardó previamente los datos del csv en formato.json, entonces la función los mostrará por consola.
+    """
     os.system("cls")
     try:
         with open("insumos\\Insumos.json", encoding="utf-8") as archivojson:
@@ -209,7 +291,20 @@ def leer_json():
         print("No hay ningun archivo json para leer.")
     volver_al_menu()
 
-def aplicar_aumento(datos_importados, precios_actualizados, lista_insumos:list):
+def aplicar_aumento(datos_importados:bool, precios_actualizados:bool, lista_insumos:list)->bool:
+    """(Función ideada únicamente para el menú de infoBAUS.)
+    Si el usuario trajo los datos desde el archivo .csv previamente, entonces esta función actualizará los precios
+    de cada producto aumentandolos un 8,6%.
+    Args:
+        datos_importados (bool): Bandera que si vale False entonces no sucederá nada mas que 
+        informarle al usuario que aun no trajo los datos desde el archivo
+        precios_actualizados (bool): Bandera que cumple con la función de realizar el aumento de precios una sola vez 
+        en toda la ejecución
+        lista_insumos (list): Lista de los insumos
+    Returns:
+        bool: La funcion retorna la bandera precios_actualizados seteada en True con el propósito de aumentar los precios una sola vez
+        en toda la ejecución.
+    """
     os.system("cls")
     if datos_importados:
         if not precios_actualizados:
@@ -243,8 +338,20 @@ def aplicar_aumento(datos_importados, precios_actualizados, lista_insumos:list):
     volver_al_menu()
     return precios_actualizados 
 
-
-def añadir_nuevo_insumo(datos_importados, lista_insumos:list, lista_nuevos_insumos:list, datos_actualizados):
+def añadir_nuevo_insumo(datos_importados:bool, lista_insumos:list, 
+                        lista_nuevos_insumos:list, datos_actualizados_en_lista:bool)->bool:
+    """(Función ideada únicamente para el menú infoBAUS.)
+    Si el usuario trajo los datos desde el archivo csv, entonces podrá agregar un nuevo producto a la lista.
+    Args:
+        datos_importados(bool): Bandera que si vale False entonces no sucederá nada mas que 
+        informarle al usuario que aun no trajo los datos desde el archivo
+        lista_insumos(list): Lista de los insumos.
+        lista_nuevos_insumos(list): Lista que contendrá los nuevos insumos en ella.
+        datos_actualizados_en_lista(bool): Bandera que tiene cómo único propósito evaluar si los datos han sido actualizados o no.
+    Returns:
+        bool: Una vez añadido el nuevo producto a la lista de insumos, la función retornará la bandera datos_actualizados
+        seteada en True.
+    """
     os.system("cls")
     if datos_importados:
         primer_descripcion = True
@@ -282,13 +389,18 @@ def añadir_nuevo_insumo(datos_importados, lista_insumos:list, lista_nuevos_insu
                 respuesta = validacion_entre_strings("Desea ingresar otra descripción? si/no: ", "si", "no")
         lista_nuevos_insumos.append(nuevo_producto)
         lista_insumos.append(nuevo_producto)
-        datos_actualizados = True
-        return datos_actualizados
+        datos_actualizados_en_lista = True
+        return datos_actualizados_en_lista
     else:
         print("Aún no trajo los datos desde el archivo csv.")
     volver_al_menu()
 
-def actualizar_csv(lista_nuevos_insumos:list):
+def actualizar_csv(lista_nuevos_insumos:list)->None:
+    """(Función ideada únicamente para el menú infoBAUS.)
+    Esta funcion crea un archivo csv en el cual añadirá los elementos agregados por el usuario.
+    Args:
+        lista_nuevos_insumos (list): lista de los insumos que el usuario añadió.
+    """
     with open("insumos\\insumos.csv", "r", encoding="utf-8") as archivo_insumos:
         copia = archivo_insumos.read()
     with open("insumos\\insumos.csv", "w", encoding="utf-8") as archivo_insumos:
@@ -299,7 +411,12 @@ def actualizar_csv(lista_nuevos_insumos:list):
         lista_nuevos_insumos.clear()
     print("Datos pasados a formato .csv correctamente")
 
-def actualizar_json(lista_insumos:list):
+def actualizar_json(lista_insumos:list)->None:
+    """(Función ideada únicamente para el menú infoBAUS.)
+    Esta funcion crea un archivo json en el cual añadirá los elementos agregados por el usuario.
+    Args:
+        lista_insumos (list): lista de los insumos.
+    """
     with open("insumos\\Insumos.json", "w", encoding="utf-8") as escritura:
         insumos = {}
         insumos ['producto'] = []
@@ -308,10 +425,27 @@ def actualizar_json(lista_insumos:list):
         json.dump(insumos, escritura, indent=4, ensure_ascii=False)
         print("Datos pasados a formato .json correctamente")
 
-def guardar_datos_actualizados(lista_insumos:list,lista_nuevos_insumos:list, datos_actualizados, datos_actualizados_csv, datos_actualizados_json):
+def guardar_datos_actualizados(datos_importados:bool, lista_insumos:list, 
+                                lista_nuevos_insumos:list, datos_actualizados_en_lista:bool, 
+                                datos_actualizados_csv:bool, datos_actualizados_json:bool)->None:
+    """(Función ideada únicamente para el menú infoBAUS.)
+    Esta funcion crea un archivo json o csv en el cual se añadirán los elementos agregados por el usuario.
+    El usuario será quién se encargue de guardar los datos en el formato que desee.
+    Args:
+        Bandera que si vale False entonces no sucederá nada mas que 
+        informarle al usuario que aun no trajo los datos desde el archivo
+        lista_insumos(list): Lista de los insumos.
+        lista_nuevos_insumos (list): lista de los insumos que el usuario añadió. 
+        datos_actualizados_en_lista (bool): Bandera que tiene cómo único propósito evaluar si los datos han sido actualizados o no.
+        datos_actualizados_csv (bool): Bandera que tiene cómo único propósito evaluar si los datos han sido actualizados en el csv o no.
+        datos_actualizados_json (bool): Bandera que tiene cómo único propósito evaluar si los datos han sido actualizados en el json o no.
+    Returns:
+        bool: La funcion retornará la banderas datos_actualizados_csv y datos_actualizados_json con los valores que les correspondan según la opción que haya 
+        elegido el usuario.
+    """
     os.system("cls")
-    if datos_actualizados:
-        if datos_actualizados:
+    if datos_importados:
+        if datos_actualizados_en_lista:
             print("En que formato de archivo desea actualizar los datos?")
             print("=1= Actualizar los datos en el archivo .csv")
             print("=2= Actualizar los datos en el archivo .json.")
@@ -333,6 +467,6 @@ def guardar_datos_actualizados(lista_insumos:list,lista_nuevos_insumos:list, dat
                         print("Ya actualizo los datos en el archivo .json.")
     else:
         os.system("cls")
-        print("Aun no realizo ningun cambio.")
+        print("Aún no trajo los datos desde el archivo csv.")
     volver_al_menu()
     return datos_actualizados_csv, datos_actualizados_json
