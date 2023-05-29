@@ -6,13 +6,12 @@ Alumno: Thomas Marino.
 ---
 ## Explicación del código paso por paso. Cada función se encuentra argumentada dentro del código.  
 ---
-![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G/assets/123998550/bd4ae5e3-18d3-4ce2-b9fd-94810e02a760)
-- Linea 1 a 7:  
-Imports necesarios para el funcionamiento del código.
-- Linea 9 a 17:  
-Declaración de variables, lista, set y banderas utilizadas en el código:  
-numero_ingresado -> seteada a 0 para que pueda ingresarse al while del menú  
-- Linea 19 a 197:  
+![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G-ThomasMarino/assets/123998550/98a0cdda-0bf4-4fa2-b593-b76770bf9660)
+- Linea 1:  
+Import necesario traer todas las funciones que el programa necesita.
+- Linea 3 a 15:  
+Declaración de variables, listas, set y banderas utilizadas en el código:  
+- Linea 18 a 74:  
 Una vez dentro del while, se mostrara el menú con la función "mostrar_menu()".  
 Luego se pide el ingreso de ún número el cual representará la acción que el usuario desee realizar dentro del menú.  
 Este número_ingresado será utilizado en un match el cual realizará las acciones dentro del menú según el número ingresado.  
