@@ -13,7 +13,7 @@ precios_actualizados = False
 datos_actualizados_csv = False
 datos_actualizados_json = False
 datos_actualizados = False
-json_creado = False
+
 
 while numero_ingresado != 12:
     os.system("cls")
@@ -44,7 +44,7 @@ while numero_ingresado != 12:
             datos_actualizados_json = False
         case 11:
             datos_actualizados_csv, datos_actualizados_json = \
-            guardar_datos_actualizados(lista_insumos, lista_nuevos_insumos, datos_actualizados, datos_actualizados_csv, datos_actualizados_json)
+            guardar_datos_actualizados(datos_importados, lista_insumos, lista_nuevos_insumos, datos_actualizados, datos_actualizados_csv, datos_actualizados_json)
             vaciar_listas(lista_marcas, set_marcas)
             ingreso_opc_2 = False
             ingreso_opc_3 = False
