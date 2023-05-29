@@ -323,8 +323,8 @@ def aplicar_aumento(datos_importados:bool, precios_actualizados:bool, lista_insu
                 texto = str(texto[0])
                 i = 0
                 for linea in texto.split("\n"):
-                    if i == len(lista_insumos):
-                        i = len(lista_insumos) - 1 
+                    if i == len(lista_insumos) + 1:
+                        i = len(lista_insumos) 
                     else:
                         reemplazo = str(lista_insumos[i-1]['PRECIO'])
                         linea = re.sub("\$+\d+\.+\d+", f"${reemplazo}", linea)
