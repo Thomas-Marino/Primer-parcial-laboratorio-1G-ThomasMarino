@@ -5,7 +5,6 @@ Alumno: Thomas Marino.
 ### [Consignas.](https://docs.google.com/document/d/1MKLTkz4yQ4sdBsssIk2zXlBUpIjJm6e-CrCIeWTSG2s/edit)
 ---
 ##  Vista general del main.
----
 ![image](https://github.com/Thomas-Marino/Primer-parcial-laboratorio-1G-ThomasMarino/assets/123998550/98a0cdda-0bf4-4fa2-b593-b76770bf9660)
 **Cada case fue pensado para resolver cada punto de la consigna en orden, es decir, el case 1 representa el punto 1, el case 2 representa el punto 2, y así hasta llegar hacia el último punto, exceptuando el punto 10, éste se encuentra en el case 12 y los requerimientos extra solicitados durante el parcial práctico se encuentran en el case 10 y 11.**
 
