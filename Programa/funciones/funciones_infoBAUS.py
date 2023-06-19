@@ -1,7 +1,4 @@
-import os
-import re
-import json
-import copy
+import os, json, copy
 from funciones.mis_funciones import *
 from funciones.mis_funciones_para_validaciones import *
 
@@ -57,7 +54,7 @@ def traer_datos_desde_archivo(datos_importados:bool, lista:list)->bool:
             producto['PRECIO'] = float(categoria[3].replace("$", ""))
             producto['DESCRIPCION'] = str(categoria[4].replace("|!*|", ", "))
             lista.append(producto)
-            datos_importados = True
+        datos_importados = True
         print("Los datos fueron importados desde el csv con exito.")
     else:
         print("Los datos ya fueron importados correctamente")
@@ -216,13 +213,13 @@ def realizar_compras(datos_importados:bool, lista_insumos:list, numero_facturaci
                         print(f"  Descripcion: {insumo['DESCRIPCION']}\n")
                 if contador == 0:
                     input("No se encontraron coincidencias. Pulse enter para volver a filtrar...")
-            id_ingresado = pedir_numero_entre_valores("Ingrese el ID del producto que desee añadir al carrito (1 - 50): ", 1, len(lista_insumos))
+            id_ingresado = pedir_numero_entre_valores("Ingrese el ID del producto que desee añadir al carrito: ", 1, len(lista_insumos))
             while not id_validado:
                 for i in range(len(ids_insumos_filtrados)):
                     if id_ingresado == ids_insumos_filtrados[i]:
                         id_validado = True
                 if not id_validado:
-                    id_ingresado = pedir_numero_entre_valores("Ingrese el ID del producto que desee añadir al carrito (1 - 50): ", 1, len(lista_insumos))
+                    id_ingresado = pedir_numero_entre_valores("Ingrese el ID del producto que desee añadir al carrito: ", 1, len(lista_insumos))
             cantidad_ingresada = pedir_numero_entre_valores("Ingrese cuantas unidades desea comprar, max 99: ", 1, 99)
             precio_por_cantidad = lista_insumos [id_ingresado - 1] ['PRECIO'] * cantidad_ingresada
             carrito.append(f"ID: {lista_insumos [id_ingresado - 1] ['ID']}, Nombre: {lista_insumos [id_ingresado - 1] ['NOMBRE']}, Cantidad: {cantidad_ingresada}\
@@ -231,28 +228,22 @@ def realizar_compras(datos_importados:bool, lista_insumos:list, numero_facturaci
                                                                 , "si", "no") 
             precio_total += precio_por_cantidad
         os.system("cls") 
-        for elemento in carrito:
-            print(elemento)
-        print(f"Precio total: ${precio_total:5.2f}.")
-        va_a_comprar = validacion_entre_strings("Desea confirmar la compra? s/n: ", "s", "n")
-        if va_a_comprar == "s":
-            numero_facturacion += 1
-            try:
-                file_existente = True
-                while file_existente:
-                    with open(f"facturas\\factura{numero_facturacion}.txt", "r"):
-                        file_existente = True
-                    numero_facturacion += 1
-            except FileNotFoundError:
-                with open(f"facturas\\factura{numero_facturacion}.txt", "w", encoding="utf-8") as escritura:
-                    escritura.write(f"================== Compra procesada con éxito ==================")
-                    escritura.write(f"\n\n- Productos comprados: \n")
-                    for elemento in carrito:
-                        escritura.write(elemento)
-                    escritura.write(f"\nSubtotal: ${precio_total:5.2f}")
-                    escritura.write("\n\nMuchas gracias por su compra en InfoBaus electronics.\nAlcoyana alcoyana 555, Roma.")
-        else:
-            pass
+        numero_facturacion += 1
+        try:
+            file_existente = True
+            while file_existente:
+                with open(f"facturas\\factura{numero_facturacion}.txt", "r"):
+                    file_existente = True
+                numero_facturacion += 1
+        except FileNotFoundError:
+            with open(f"facturas\\factura{numero_facturacion}.txt", "w", encoding="utf-8") as escritura:
+                escritura.write(f"================== Compra procesada con éxito ==================")
+                escritura.write(f"\n\n- Productos comprados: \n")
+                for elemento in carrito:
+                    escritura.write(elemento)
+                escritura.write(f"\nSubtotal: ${precio_total:5.2f}")
+                escritura.write("\n\nMuchas gracias por su compra en InfoBaus electronics.\nAlcoyana alcoyana 555, Roma.")
+        print("Factura generada con éxito.")
     else:
         print("Aún no trajo los datos desde el archivo csv.")
     volver_al_menu()
