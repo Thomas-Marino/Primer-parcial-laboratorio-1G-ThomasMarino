@@ -1,4 +1,3 @@
-import re
 # =============== STRINGS ===============
 def capitalizador(cadena:str)->str:
     """Función que se encarga de convertir la primer letra de una cadena de strings en mayúscula.
