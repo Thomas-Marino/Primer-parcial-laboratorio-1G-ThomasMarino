@@ -2,6 +2,8 @@
 ---
 Alumno: Thomas Marino.
 ---
+[Video de explicación y defensa del código.](https://drive.google.com/file/d/1TN98ZOOhuNCCwVsodfzDUt6-iuC9JVLd/view?usp=sharing)  
+(Mis disculpas si es muy largo, hice lo posible para explicar y defender el proyecto en el menor tiempo posible.)
 ### [Consignas.](https://docs.google.com/document/d/1MKLTkz4yQ4sdBsssIk2zXlBUpIjJm6e-CrCIeWTSG2s/edit)
 ---
 ##  Vista general del main.
