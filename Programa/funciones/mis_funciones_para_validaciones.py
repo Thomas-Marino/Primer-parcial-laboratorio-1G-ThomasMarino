@@ -1,84 +1,21 @@
 import re
 
-def validacion_entre_strings(mensaje:str, parametro_1:str, parametro_2= None, parametro_3= None, parametro_4= None, parametro_5= None, parametro_6= None, parametro_7= None)->str:
+def validacion_entre_2_strings(mensaje:str, condicion_1:str, condicion_2:str)->str:
     """
     Función utilizada con el propósito de validar un ingreso
     entre un máximo de 7 strings\n
     Args:
         mensaje (str): Será el mensaje que se mostrará dentró del input para capturar la respuesta ingresada.\n
-        parametro_1 (str): condición que debe cumplir la respuesta ingresada\n
-        parametro_2 (str, optional): condición que debe cumplir la respuesta ingresada. Este parametro viene seteado en None por deffault así que si no se ingresa nada en este parametro, la función cumple su propósito igualmente.\n
-        parametro_3 (str, optional): condición que debe cumplir la respuesta ingresada. Este parametro viene seteado en None por deffault así que si no se ingresa nada en este parametro, la función cumple su propósito igualmente.\n
-        parametro_4 (str, optional): condición que debe cumplir la respuesta ingresada. Este parametro viene seteado en None por deffault así que si no se ingresa nada en este parametro, la función cumple su propósito igualmente.\n
-        parametro_5 (str, optional): condición que debe cumplir la respuesta ingresada. Este parametro viene seteado en None por deffault así que si no se ingresa nada en este parametro, la función cumple su propósito igualmente.\n
-        parametro_6 (str, optional): condición que debe cumplir la respuesta ingresada. Este parametro viene seteado en None por deffault así que si no se ingresa nada en este parametro, la función cumple su propósito igualmente.\n
-        parametro_7 (str, optional): condición que debe cumplir la respuesta ingresada. Este parametro viene seteado en None por deffault así que si no se ingresa nada en este parametro, la función cumple su propósito igualmente.\n
-
+        condicion_1 (str): condición que debe cumplir la respuesta ingresada\n
+        condicion_2 (str): 2da condición que debe cumplir la respuesta ingresada\n
     Return:
         str: La función retorna la respuesta ingresada luego de qué esta haya cumplido con todos los parámetros ingresados.
     """
-    validado = False
-    while validado != True:
+    entrada = input(mensaje)
+    while (entrada != condicion_1 and
+            entrada != condicion_2):
         entrada = input(mensaje)
-        if (parametro_1 and not parametro_2 and
-            not parametro_3 and not parametro_4 and
-            not parametro_5 and not parametro_6 and
-            not parametro_7):
-            while entrada != parametro_1:
-                entrada = input(mensaje)
-            validado = True
-        elif (parametro_2 and not parametro_3 and not parametro_4 and
-            not parametro_5 and not parametro_6 and
-            not parametro_7):
-            while (entrada != parametro_1 and
-                    entrada != parametro_2):
-                entrada = input(mensaje)
-            validado = True
-        elif (parametro_3 and not parametro_4 and
-            not parametro_5 and not parametro_6 and
-            not parametro_7):
-            while (entrada != parametro_1 and
-                    entrada != parametro_2 and
-                    entrada != parametro_3):
-                entrada = input(mensaje)
-            validado = True
-        elif (parametro_4 and not parametro_5 and not parametro_6 and
-            not parametro_7):
-            while (entrada != parametro_1 and
-                    entrada != parametro_2 and
-                    entrada != parametro_3 and
-                    entrada != parametro_4):
-                entrada = input(mensaje)
-            validado = True
-        elif (parametro_5 and not parametro_6 and
-            not parametro_7):
-            while (entrada != parametro_1 and
-                    entrada != parametro_2 and
-                    entrada != parametro_3 and
-                    entrada != parametro_4 and
-                    entrada != parametro_5):
-                entrada = input(mensaje)
-            validado = True
-        elif parametro_6 and not parametro_7:
-            while (entrada != parametro_1 and
-                    entrada != parametro_2 and
-                    entrada != parametro_3 and
-                    entrada != parametro_4 and
-                    entrada != parametro_5 and
-                    entrada != parametro_6):
-                entrada = input(mensaje)
-            validado = True
-        elif parametro_7:
-            while (entrada != parametro_1 and
-                    entrada != parametro_2 and
-                    entrada != parametro_3 and
-                    entrada != parametro_4 and
-                    entrada != parametro_5 and
-                    entrada != parametro_6 and
-                    entrada != parametro_7):
-                entrada = input(mensaje)
-            validado = True
-        return entrada
+    return entrada
 
 def pedir_palabra(mensaje:str)->str:
     """
