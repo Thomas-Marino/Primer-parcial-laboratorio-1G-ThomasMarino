@@ -14,7 +14,6 @@ datos_actualizados_csv = False
 datos_actualizados_json = False
 datos_actualizados = False
 
-
 while numero_ingresado != 12:
     os.system("cls")
     mostrar_menu()
@@ -23,19 +22,13 @@ while numero_ingresado != 12:
         case 1:
             datos_importados = traer_datos_desde_archivo(datos_importados, lista_insumos)
         case 2:
-            ingreso_opc_2 = listar_cantidad_por_marca(datos_importados, 
-                                                        ingreso_opc_3, 
-                                                        ingreso_opc_2, 
-                                                        lista_insumos, 
-                                                        lista_marcas, 
-                                                        set_marcas)
+            ingreso_opc_2 = listar_cantidad_por_marca(datos_importados, ingreso_opc_3, 
+                                                        ingreso_opc_2, lista_insumos, 
+                                                        lista_marcas, set_marcas)
         case 3:
-            ingreso_opc_3 = listar_insumos_por_marca(datos_importados, 
-                                                        ingreso_opc_2, 
-                                                        ingreso_opc_3,
-                                                        lista_insumos, 
-                                                        lista_marcas, 
-                                                        set_marcas)
+            ingreso_opc_3 = listar_insumos_por_marca(datos_importados, ingreso_opc_2, 
+                                                        ingreso_opc_3, lista_insumos, 
+                                                        lista_marcas, set_marcas)
         case 4:
             buscar_insumo_por_caracteristica(datos_importados, lista_insumos)
         case 5:
@@ -47,27 +40,19 @@ while numero_ingresado != 12:
         case 8:
             leer_json()
         case 9:
-            precios_actualizados = aplicar_aumento(datos_importados, 
-                                                    precios_actualizados, 
+            precios_actualizados = aplicar_aumento(datos_importados, precios_actualizados, 
                                                     lista_insumos)
         case 10:
-            datos_actualizados = añadir_nuevo_insumo(datos_importados,
-                                                        lista_insumos, 
-                                                        lista_nuevos_insumos, 
-                                                        datos_actualizados)
-            datos_actualizados_csv = False
-            datos_actualizados_json = False
+            datos_actualizados = añadir_nuevo_insumo(datos_importados, lista_insumos, 
+                                                        lista_nuevos_insumos, datos_actualizados)
+            datos_actualizados_csv, datos_actualizados_json = \
+            setear_banderas(datos_actualizados_csv, datos_actualizados_json, False)
         case 11:
             datos_actualizados_csv, datos_actualizados_json = \
-            guardar_datos_actualizados(datos_importados,
-                                        lista_insumos, 
-                                        lista_nuevos_insumos, 
-                                        datos_actualizados, 
-                                        datos_actualizados_csv, 
-                                        datos_actualizados_json)
+            guardar_datos_actualizados(datos_importados, lista_insumos, lista_nuevos_insumos, 
+                                        datos_actualizados, datos_actualizados_csv, datos_actualizados_json)
             vaciar_listas(lista_marcas, set_marcas)
-            ingreso_opc_2 = False
-            ingreso_opc_3 = False
+            ingreso_opc_2, ingreso_opc_3 = setear_banderas(ingreso_opc_2, ingreso_opc_3, False)
         case 12:
             os.system("cls")
             print("Cierre del programa realizado con éxito.")

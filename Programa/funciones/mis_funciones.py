@@ -114,4 +114,22 @@ def vaciar_listas(lista_1:list, lista_2:list=[], lista_3:list=[], lista_4:list=[
     lista_3.clear()
     lista_4.clear()
     lista_5.clear()
-    
+
+def setear_banderas(bandera_1:bool, bandera_2:bool, estado:bool)->bool:
+    """Funcion ideada para setear 2 banderas a un mismo estado mas facilmente.
+
+    Args:
+        bandera_1 (bool): primer bandera a settear
+        bandera_2 (bool): segunda bandera a settear
+        estado (bool): estado en el que se las quiera setear (True o False).
+
+    Returns:
+        bool: ambas banderas seteadas al mismo estado.
+    """
+    if estado:
+        bandera_1 = True
+        bandera_2 = True
+    if not estado:
+        bandera_1 = False
+        bandera_2 = False
+    return bandera_1, bandera_2
