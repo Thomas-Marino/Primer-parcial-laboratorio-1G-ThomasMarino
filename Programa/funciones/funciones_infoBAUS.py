@@ -224,7 +224,7 @@ def realizar_compras(datos_importados:bool, lista_insumos:list, numero_facturaci
             precio_por_cantidad = lista_insumos [id_ingresado - 1] ['PRECIO'] * cantidad_ingresada
             carrito.append(f"ID: {lista_insumos [id_ingresado - 1] ['ID']}, Nombre: {lista_insumos [id_ingresado - 1] ['NOMBRE']}, Cantidad: {cantidad_ingresada}\
                             \nPrecio unitario: ${lista_insumos [id_ingresado - 1] ['PRECIO']}, Precio por cantidad: ${precio_por_cantidad:5.2f}.\n")
-            añadir_al_carrito = validacion_entre_strings("Producto añadido al carrito, desea añadir otro elemento? si/no: "
+            añadir_al_carrito = validacion_entre_2_strings("Producto añadido al carrito, desea añadir otro elemento? si/no: "
                                                                 , "si", "no") 
             precio_total += precio_por_cantidad
         os.system("cls") 
@@ -377,7 +377,7 @@ def añadir_nuevo_insumo(datos_importados:bool, lista_insumos:list,
             if contador == 3:
                 respuesta = "no"
             else:
-                respuesta = validacion_entre_strings("Desea ingresar otra descripción? si/no: ", "si", "no")
+                respuesta = validacion_entre_2_strings("Desea ingresar otra descripción? si/no: ", "si", "no")
         lista_nuevos_insumos.append(nuevo_producto)
         lista_insumos.append(nuevo_producto)
         datos_actualizados_en_lista = True
